@@ -1,65 +1,91 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!--  Google font  -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
     <!--  Font awesome  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-</head>
-<body class="bg-gray-700">
-<div class="max-w-sm p-5 mt-24 mx-auto font-Roboto rounded-lg text-center" style="background-color: #8BC6EC;
-background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
-">
-    <!-- Search bar -->
-    <div class=" flex items-center justify-between">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="bg-gray-700">
+    <div
+      class="mx-auto mt-24 max-w-sm rounded-lg p-5 text-center font-Roboto"
+      style="
+        background-color: #8bc6ec;
+        background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+      "
+    >
+      <!-- Input city name bar -->
+      <div class="relative flex items-center justify-between space-x-3">
         <input
-                class="flex w-10/12 items-center border-2 rounded-full bg-white outline-0 p-2.5 pl-4 text-sm font-medium tracking-wide"
-                type="text"
-                placeholder="Enter city name">
-        <button class="flex p-3 bg-white rounded-full text-2xl"><i
-                class="fa-solid fa-magnifying-glass "></i></button>
-    </div>
-    <div class="text-left text-white mt-2 text-sm hidden" id="error">Invalid city name</div>
+          class="flex w-10/12 items-center rounded-full border-2 bg-white p-2.5 pl-4 text-sm font-medium tracking-wide outline-0"
+          type="text"
+          placeholder="Enter city name"
+        />
+        <!--   Search button     -->
+        <button class="flex rounded-full bg-white p-3 text-2xl" id="search-button">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <!--   GPS     -->
+        <button class="flex rounded-full bg-white p-3 text-2xl" id="gps-button">
+          <i class="fa-solid fa-location-crosshairs"></i>
+        </button>
+      </div>
+      <div class="mt-2 hidden text-left text-sm text-white" id="error">Invalid city name</div>
 
-    <!-- Temperature + city name -->
-    <div class="hidden" id="weather">
+      <!-- Temperature + city name -->
+      <div class="hidden" id="weather">
         <div>
-            <img class="mx-auto w-48 h-48" id="weather-icon" src="/weather-app-img/images/clear.png" alt="">
-            <div class="text-7xl text-white font-medium" id="temp">22°c</div>
-            <div class="text-4xl text-white font-medium tracking-wide leading-relaxed" id="city">New York</div>
+          <img
+            class="mx-auto h-48 w-48"
+            id="weather-icon"
+            src="/weather-app-img/images/clear.png"
+            alt=""
+          />
+          <div class="text-7xl font-medium text-white" id="temp">22°c</div>
+          <div class="text-4xl font-medium leading-relaxed tracking-wide text-white" id="city">
+            New York
+          </div>
         </div>
 
         <!-- Humidity + Wind speed -->
-        <div class="flex justify-between mt-7">
-            <!--  Humidity  -->
-            <div class="flex items-center space-x-3 text-left leading-tight">
-                <img class="w-10 h-10" src="/weather-app-img/images/humidity.png" alt="humidity">
-                <div>
-                    <div class="text-3xl text-white" id="humidity">30%</div>
-                    <div class="text-white">Humidity</div>
-                </div>
+        <div class="mt-7 flex justify-between">
+          <!--  Humidity  -->
+          <div class="flex items-center space-x-3 text-left leading-tight">
+            <img class="h-10 w-10" src="/weather-app-img/images/humidity.png" alt="humidity" />
+            <div>
+              <div class="text-3xl text-white" id="humidity">30%</div>
+              <div class="text-white">Humidity</div>
             </div>
-            <!--  Wind speed  -->
-            <div class="flex items-center space-x-3 text-left leading-tight">
-                <img class="w-10 h-10" src="/weather-app-img/images/wind.png" alt="wind speed">
-                <div>
-                    <div class="text-3xl text-white tracking-tight" id="windSpeed">5.66 km/h</div>
-                    <div class="text-white">Wind Speed</div>
-                </div>
+          </div>
+          <!--  Wind speed  -->
+          <div class="flex items-center space-x-3 text-left leading-tight">
+            <img class="h-10 w-10" src="/weather-app-img/images/wind.png" alt="wind speed" />
+            <div>
+              <div class="text-3xl tracking-tight text-white" id="windSpeed">5.66 km/h</div>
+              <div class="text-white">Wind Speed</div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
-
-<script type="module" src="./main.js"></script>
-</body>
+    <script type="module" src="./main.js"></script>
+  </body>
 </html>
